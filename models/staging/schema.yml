@@ -1,0 +1,57 @@
+ # schema.yml
+
+ version: 2
+
+ sources:
+   - name: raw
+     schema: gz_raw_data
+     tables:
+       - name: sales
+         identifier: raw_gz_sales
+         description: sales of Greenweez / we have on row per product_id found in each orders_id
+         tests:
+          - unique:
+              column_name: orders_products_id
+         columns:
+          - name: date_date
+            description: date of purchase
+          - name: orders_id
+            description: ID allocated to order
+          - name: products_id
+            description: ID of product part of the order 
+          - name: orders_products_id
+            description: combination of orders and products id as unique key
+          - name: revenue
+            description: revenue generated from sales
+          - name: quantity
+            description: quantity of product purchased within order
+       - name: product
+         identifier: raw_gz_product
+         description: price per product id
+         tests:
+          - unique:
+              column_name: products_id              
+          - not_null:
+              column_name: products_id
+         columns:
+          - name: products_id
+            description: ID allocated to specific product
+          - name: purchase_price
+            description: price allocated to specific product
+       - name: ship
+         identifier: raw_gz_ship
+         description: overview of shipping relevant data with rows per order_id
+         tests:
+          - unique:
+              column_name: orders_id
+          - not_null:
+              column_name: orders_id              
+         columns:
+          - name: orders_id
+            description: ID allocated to specific order
+          - name: shipping_fee
+            description: fee paid by customer for specific order
+          - name: logcost
+            description: logistics costs for Greenwez allocated to order
+          - name: ship_cost
+            description: shipping costs for Greenwez allocated to order
