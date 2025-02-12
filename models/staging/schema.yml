@@ -53,6 +53,18 @@
           - name: ship_cost
             description: shipping costs for Greenwez allocated to order
 
+       - name: adwords
+         identifier: raw_gz_adwords
+         description: overview of adwords campaigns
+       - name: facebook
+         identifier: raw_gz_facebook
+         description: overview of facebook campaigns
+       - name: bing
+         identifier: raw_gz_bing
+         description: overview of bing campaigns
+       - name: criteo
+         identifier: raw_gz_criteo
+         description: overview of criteo campaigns
 
  models:
  
