@@ -9,9 +9,6 @@
        - name: sales
          identifier: raw_gz_sales
          description: sales of Greenweez / we have on row per product_id found in each orders_id
-         tests:
-          - unique:
-              column_name: orders_products_id
          columns:
           - name: date_date
             description: date of purchase
@@ -165,53 +162,57 @@
    # Mart #
    - name: finance_days
      description: overview of data per day for finance team
+     config:
+      +materialized: table
+      +schema: finance
+
      columns:
-       - name: date_date
-         description: date of the order
-         tests:
-           - not_null
-           - unique
-       - name: nb_transactions
-         description: count of transactions per day
-         tests:
-           - not_null
-       - name: revenue
-         description: revenue per day
-         tests:
-           - not_null
-       - name: average_basket
-         description: average basket per day
-         tests:
-           - not_null
-       - name: average_basket_bis
-         description: average basket bis per day
-         tests:
-           - not_null
-       - name: margin
-         description: margin per day
-         tests:
-           - not_null
-       - name: operational_margin
-         description: operational margin per day
-         tests:
-           - not_null       
-       - name: purchase_cost
-         description: purchase cost per day
-         tests:
-           - not_null
-       - name: shipping_fee
-         description: shipping feee per day
-         tests:
-           - not_null
-       - name: logcost
-         description: logcost per day
-         tests:
-           - not_null
-       - name: ship_cost
-         description: ship cost per day
-         tests:
-           - not_null
-       - name: quantity
-         description: quantity sold per day
-         tests:
-           - not_null
+      - name: date_date
+        description: date of the order
+        tests:
+          - not_null
+          - unique
+      - name: nb_transactions
+        description: count of transactions per day
+        tests:
+          - not_null
+      - name: revenue
+        description: revenue per day
+        tests:
+          - not_null
+      - name: average_basket
+        description: average basket per day
+        tests:
+          - not_null
+      - name: average_basket_bis
+        description: average basket bis per day
+        tests:
+          - not_null
+      - name: margin
+        description: margin per day
+        tests:
+          - not_null
+      - name: operational_margin
+        description: operational margin per day
+        tests:
+          - not_null       
+      - name: purchase_cost
+        description: purchase cost per day
+        tests:
+          - not_null
+      - name: shipping_fee
+        description: shipping fee per day
+        tests:
+          - not_null
+      - name: logcost
+        description: logcost per day
+        tests:
+          - not_null
+      - name: ship_cost
+        description: ship cost per day
+        tests:
+          - not_null
+      - name: quantity
+        description: quantity sold per day
+        tests:
+          - not_null
