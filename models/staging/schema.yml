@@ -170,13 +170,15 @@
        - name: ship_cost
          description: shipping cost paid by Greenweez to the carrier/logistics provider
 
+   - name: finance_campaigns_day
+     description: overview of data with campaigns per day for finance team
 
    # Mart #
    - name: finance_days
      description: overview of data per day for finance team
      config:
-      +materialized: table
-      +schema: finance
+      materialized: table
+      schema: finance
 
      columns:
       - name: date_date
@@ -228,3 +230,9 @@
         description: quantity sold per day
         tests:
           - not_null
+
+   - name: finance_campaigns_month
+     description: overview of data with campaigns per month for finance team
+     config:
+      materialized: table
+      schema: finance
